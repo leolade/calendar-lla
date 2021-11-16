@@ -1,0 +1,26 @@
+<form [formGroup]="form" class="fxFlexbox fxLayoutColumn fxLayoutGap10" (ngSubmit)="onSubmit($event)">
+  <mat-form-field>
+    <mat-label>
+      Nom
+    </mat-label>
+    <input [formControl]="form.nameFC" matInput id="event-name-input" type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Date de début</mat-label>
+    <input matInput [formControl]="form.beginDateFC" [matDatepicker]="pickerDebut" id="date-debut-input">
+    <mat-datepicker-toggle matSuffix [for]="pickerDebut"></mat-datepicker-toggle>
+    <mat-datepicker #pickerDebut></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Date de fin</mat-label>
+    <input matInput [formControl]="form.endDateFC" [matDatepicker]="pickerFin" id="date-fin-input">
+    <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+    <mat-datepicker #pickerFin></mat-datepicker>
+  </mat-form-field>
+  <mat-checkbox [formControl]="form.fullDayEventFC" id="evenement-jour-entier-input">
+    Journée entière
+  </mat-checkbox>
+  <button mat-raised-button type="submit">
+    Valider
+  </button>
+</form>

@@ -1,0 +1,27 @@
+<div class="calendar-header fxFlexbox fxLayoutAlignStartCenter">
+  <button (click)="onTodayClick($event)" mat-stroked-button>Aujourd'hui</button>
+  <button (click)="onNavigateBefore($event)" mat-icon-button>
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <button (click)="onNavigateAfter($event)" mat-icon-button>
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+  <span class="calendarMainTitle">{{calendarMainTitle}}</span>
+</div>
+<div [ngSwitch]="currentView" class="calendar-content">
+  <ng-container *ngIf="currentDate$ | async; let currentDay">
+    <calendar-lla-month-view
+      (daySelected)="onDaySelected($event)"
+      *ngSwitchCase="'MONTH'"
+      [month]="currentDay.getMonth()"
+      [year]="currentDay.getFullYear()"
+      cdkDropListGroup>
+    </calendar-lla-month-view>
+  </ng-container>
+  <ng-container *ngSwitchCase="'DAY'">
+    <calendar-lla-day-view (onNavigateBack)="onMonthSelected(currentDay)" *ngIf="currentDate$ | async; let currentDay"
+                           [day]="currentDay">
+    </calendar-lla-day-view>
+  </ng-container>
+</div>
+

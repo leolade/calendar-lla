@@ -1,0 +1,15 @@
+<div *ngFor="let weekDays of weeksDays$ | async; let i = index" [ngClass]="{'with-day-name': i === 0}"
+     class="weekDays fxFlexbox fxLayoutRow">
+  <div *ngFor="let day of weekDays; let j = index" class="bordered">
+    <span *ngIf="i === 0" class="dayName">
+      {{dayNames[j]}}
+    </span>
+    <calendar-lla-month-view-day
+      (daySelected)="onDaySelected($event)"
+      (dblclick)="onDayDoubleClickHandler($event, day)"
+      [day]="day?.date"
+      [events]="day.events">
+    </calendar-lla-month-view-day>
+  </div>
+</div>
+

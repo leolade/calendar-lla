@@ -1,0 +1,50 @@
+:host {
+  display: block;
+
+  $header-height: 28px;
+  $header-paddding-top: 2px;
+  $header-total-height: calc(#{$header-height} + #{$header-paddding-top});
+
+  .header {
+    height: #{$header-height};
+    padding-top: #{$header-paddding-top};
+    text-align: center;
+
+    .dayName {
+      background-color: #bfbfbf;
+      color: white;
+      padding: 4px;
+      border-radius: 12px;
+      min-width: 20px;
+    }
+  }
+
+  .content {
+
+    $content-margin: 5px;
+
+    margin: $content-margin;
+    height: calc(100% - #{$header-total-height} - calc(#{$content-margin} * 2));
+    overflow: auto;
+
+    .no-event {
+      opacity: 0.6;
+    }
+
+    .help-text {
+      margin-top: 20px;
+      opacity: 0.4;
+      text-align: center;
+    }
+  }
+
+}
+
+.event {
+  padding: 3px 3px 3px 6px;
+  margin: 3px;
+  background-color: #418cbe;
+  color: white;
+  width: calc(100% - 15px);
+  border-radius: 6px;
+}

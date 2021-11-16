@@ -1,0 +1,30 @@
+<div class="header">
+  <a (click)="onBackClicked()" [routerLink]="[]">Retour</a>
+</div>
+<div class="content">
+  <div class="calendar-day-layout fxFlexbox fxLayoutColumn">
+    <span *ngFor="let axeValue of timeAxesValues"
+          [id]="LAYOUT_HOUR_ID_PREFIX + axeValue.dateTime"
+          [ngClass]="{'hour': axeValue.isHourStep,
+          'half-hour': axeValue.isMidHourStep,
+          'quarter-hour': axeValue.isQuarterHourStep,
+          'first-graduation': axeValue.isFirstStep,
+          'last-graduation': axeValue.isLastStep
+          }"
+          class=" {{LAYOUT_HOUR_CLASS}} fxFlexbox fxLayoutRow">
+      <div class="time-label">
+      <ng-container *ngIf="axeValue.isHourStep">
+        {{axeValue.date | date:'shortTime':undefined:'fr-FR'}}
+      </ng-container>
+      </div>
+      <div class="{{LAYOUT_HOUR_EVENT_GRID_CLASS}} " >
+      </div>
+    </span>
+    <div cdkDrag *ngFor="let event of events$ | async; trackBy: trackByUuid"
+         [cdkDragData]="event"
+         (cdkDragReleased)="onDragReleased($event)"
+         (cdkDragMoved)="onDragMove($event)">
+      {{event.name}}
+    </div>
+  </div>
+</div>

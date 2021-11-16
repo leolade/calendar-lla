@@ -1,0 +1,18 @@
+<div class="header fxFlexbox fxLayoutRow fxLayoutAlignCenterCenter">
+  <a (click)="onDayClicked()" [routerLink]="[]" class="dayName">{{dayName}}</a>
+</div>
+<div class="content fxFlexbox fxLayoutColumn"
+     cdkDropList [id]="dayId"
+     [cdkDropListData]="events" (cdkDropListDropped)="onItemDrop($event)">
+  <ng-container *ngIf="events.length; else noResultBlock">
+    <div  *ngFor="let event of events"  (dblclick)="onEventDblClick($event, event)" cdkDrag [cdkDragData]="event">
+      <div class="event">
+        {{event.name}}
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noResultBlock>
+    <span class="hide-on-dragging no-event">Aucun évènement ce jour</span>
+    <span class="hide-on-dragging help-text">Double-cliquez pour créer un évènements</span>
+  </ng-template>
+</div>

@@ -1,0 +1,41 @@
+:host {
+  $dayNameHeight: 20px;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  .dayNames {
+    span {
+      width: calc(100% / 7);
+      text-align: center;
+    }
+  }
+
+  .weekDays {
+    $weekDayHeight: calc((100% - #{$dayNameHeight}) / 5);
+    height: $weekDayHeight;
+
+    calendar-lla-month-view-day {
+      height: 100%;
+    }
+
+    &.with-day-name {
+      height: calc(#{$weekDayHeight} +  #{$dayNameHeight});
+
+      calendar-lla-month-view-day {
+        height: calc(100% -  #{$dayNameHeight});
+      }
+    }
+  }
+
+  .bordered {
+    border: #dadce0 1px solid;
+    width: calc(100% / 7);
+
+    .dayName {
+      height:  #{$dayNameHeight};
+      text-align: center;
+      display: block;
+    }
+  }
+}
