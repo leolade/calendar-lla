@@ -15,13 +15,13 @@ Getting started
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/leolade/calendar-lla.git calendar-lla
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd calendar-lla
 ```
 
 Install dependencies
